@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Name - Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset and Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        /* Header Styling */
+        header {
+            background: #007BFF;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FFDD57;
+        }
+
+        /* Main Container */
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        #about p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .project {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .project img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #007BFF;
+            padding: 2rem;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        #contact a {
+            color: #FFDD57;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            background: #333;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Popup Styling */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            z-index: 10;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .popup-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Yakin ingin melihat portofolio?</h2>
+            <button id="confirmBtn">Ya tentu</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Muhammad Farhan</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm [Your Name], a passionate web developer who loves building clean, user-friendly websites. I specialize in [your skills] and have experience working on various projects.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1</h3>
+                <img src="https://via.placeholder.com/500x300" alt="Project 1 Image">
+                <p>Project 1 description goes here. You can mention the technologies you used and what problem the project solves.</p>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <img src="https://via.placeholder.com/500x300" alt="Project 2 Image">
+                <p>Project 2 description goes here.</p>
+            </div>
+            <div class="project">
+                <h3>Project 3</h3>
+                <img src="https://via.placeholder.com/500x300" alt="Project 3 Image">
+                <p>Project 3 description goes here.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Kontak</h2>
+            <p>Kamu bisa mengubungiku dengan: <a href="mailto:farhan.15042006@gmail.com">farhan.15042006@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 M.Farhan. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Popup -->
+    <script>
+        // Show popup on page load
+        window.onload = function() {
+            var popup = document.getElementById("popup");
+            popup.classList.add("show");
+        };
+
+        // Close popup when button is clicked
+        document.getElementById("confirmBtn").addEventListener("click", function() {
+            var popup = document.getElementById("popup");
+            popup.classList.remove("show");
+        });
+    </script>
+</body>
+</html>
